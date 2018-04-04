@@ -1,0 +1,32 @@
+@startuml
+
+
+interface MapperListener
+MapperLoopClosureListener --|>MapperListener
+class EdgeLabel
+LinkInfo --> EdgeLabel
+class Vertex
+class Edge
+class Visitor
+  class GraphTraversal
+  class Graph
+  Mapper -right-> ScanMatcher
+  Mapper -right-> MapperSensorManager
+  Mapper -right-> MapperGraph
+  Mapper -right-> ScanSolver
+  Mapper -right-> MapperListener
+  Mapper -right-> Parameter
+
+
+  MapperGraph --|> Graph:<LocalizedRangeScan>
+  class ScanSolver
+  CorrelationGrid --> Grid:kt_int8u
+  class ScanMatcher
+  class ScanManager;
+  class MapperSensorManager
+  Mapper --|> Module
+  class Mapper{
+'    +ScanMatcher* m_pSequentialScanMatcher;
+    Process(LocalizedRangeScan* pScan);
+  }
+@enduml
